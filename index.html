@@ -35,7 +35,24 @@
             position: absolute;
             left: 55%;
             top: 55%;
-            transition: 0.2s;   /* makes movement visible */
+            transition: 0.2s;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: float 3s linear forwards;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-300px);
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -52,7 +69,6 @@
 
     // Move NO button whenever cursor moves
     document.addEventListener("mousemove", function() {
-
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 50);
 
@@ -61,7 +77,25 @@
     });
 
     function yesClicked(){
+        burstHearts();
         alert("Yayyyyy 😍❤️");
+    }
+
+    function burstHearts(){
+        for(let i=0; i<30; i++){
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
     }
 </script>
 
