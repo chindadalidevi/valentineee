@@ -2,12 +2,14 @@
 <html>
 <head>
     <title>Valentine Question</title>
+
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
             margin-top: 100px;
             background-color: #ffe6f0;
+            overflow: hidden;
         }
 
         h1 {
@@ -15,12 +17,11 @@
         }
 
         button {
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 18px;
-            margin: 20px;
-            cursor: pointer;
             border-radius: 10px;
             border: none;
+            cursor: pointer;
         }
 
         #yes {
@@ -32,6 +33,9 @@
             background-color: #ff4d4d;
             color: white;
             position: absolute;
+            left: 55%;
+            top: 55%;
+            transition: 0.2s;   /* makes movement visible */
         }
     </style>
 </head>
@@ -46,16 +50,18 @@
 <script>
     const noBtn = document.getElementById("no");
 
-    noBtn.addEventListener("mouseover", function() {
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
+    // Move NO button whenever cursor moves
+    document.addEventListener("mousemove", function() {
+
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
 
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
     });
 
-    function yesClicked() {
-        alert("Yayyyyy! ❤️🥰");
+    function yesClicked(){
+        alert("Yayyyyy 😍❤️");
     }
 </script>
 
