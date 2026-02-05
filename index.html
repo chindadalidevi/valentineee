@@ -40,19 +40,20 @@
 
         .heart {
             position: absolute;
-            font-size: 24px;
-            animation: float 3s linear forwards;
+            font-size: 25px;
+            animation: float 4s linear forwards;
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-300px);
-                opacity: 0;
-            }
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-600px); opacity: 0; }
+        }
+
+        #message {
+            font-size: 40px;
+            color: #ff0066;
+            margin-top: 50px;
+            display: none;
         }
     </style>
 </head>
@@ -64,10 +65,12 @@
 <button id="yes" onclick="yesClicked()">Yes ❤️</button>
 <button id="no">No 💔</button>
 
+<h2 id="message">Yayyyyy ❤️ You Made My Day 😍</h2>
+
 <script>
     const noBtn = document.getElementById("no");
 
-    // Move NO button whenever cursor moves
+    // NO button keeps moving
     document.addEventListener("mousemove", function() {
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 50);
@@ -77,24 +80,24 @@
     });
 
     function yesClicked(){
-        burstHearts();
-        alert("Yayyyyy 😍❤️");
-    }
 
-    function burstHearts(){
-        for(let i=0; i<30; i++){
+        document.getElementById("message").style.display = "block";
+
+        // Create LOTS of hearts
+        for(let i=0; i<200; i++){
+
             let heart = document.createElement("div");
             heart.innerHTML = "❤️";
             heart.classList.add("heart");
 
             heart.style.left = Math.random() * window.innerWidth + "px";
-            heart.style.top = Math.random() * window.innerHeight + "px";
+            heart.style.top = window.innerHeight + "px";
 
             document.body.appendChild(heart);
 
             setTimeout(() => {
                 heart.remove();
-            }, 3000);
+            }, 4000);
         }
     }
 </script>
